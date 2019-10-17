@@ -3,61 +3,61 @@ from airflow.operators.bash_operator import BashOperator
 from datetime import datetime, timedelta
 
 default_args = {
-	'owner': 'airflow',
-	'depends_on_past': False,
-	'start_date': datetime(2018, 1, 1),
-	'email_on_failure': False,
-	'email_on_retry': False,
-	'retries': 1,
-	'retry_delay': timedelta(minutes=5),
+    'owner': 'airflow',
+    'depends_on_past': False,
+    'start_date': datetime(2018, 1, 1),
+    'email_on_failure': False,
+    'email_on_retry': False,
+    'retries': 1,
+    'retry_delay': timedelta(minutes=5),
 }
 
-dag = DAG('example_dag',
-			max_active_runs=3,
-			schedule_interval=timedelta(minutes=60),
-			default_args=default_args)
+dag = DAG('test1_dag',
+          max_active_runs=3,
+          schedule_interval=timedelta(minutes=60),
+          default_args=default_args)
 
 command = 'sleep $[ ( $RANDOM % 3 )  + 1 ]s; echo `date`'
 
 t1 = BashOperator(
-	task_id='print_date1',
-	bash_command=command,
-	dag=dag)
+    task_id='print_date1',
+    bash_command=command,
+    dag=dag)
 
 t2 = BashOperator(
-	task_id='print_date2',
-	bash_command=command,
-	dag=dag)
+    task_id='print_date2',
+    bash_command=command,
+    dag=dag)
 
 t3 = BashOperator(
-	task_id='print_date3',
-	bash_command=command,
-	dag=dag)
+    task_id='print_date3',
+    bash_command=command,
+    dag=dag)
 
 t4 = BashOperator(
-	task_id='print_date4',
-	bash_command=command,
-	dag=dag)
+    task_id='print_date4',
+    bash_command=command,
+    dag=dag)
 
 t5 = BashOperator(
-	task_id='print_date5',
-	bash_command=command,
-	dag=dag)
+    task_id='print_date5',
+    bash_command=command,
+    dag=dag)
 
 t6 = BashOperator(
-	task_id='print_date6',
-	bash_command=command,
-	dag=dag)
+    task_id='print_date6',
+    bash_command=command,
+    dag=dag)
 
 t7 = BashOperator(
-	task_id='print_date7',
-	bash_command=command,
-	dag=dag)
+    task_id='print_date7',
+    bash_command=command,
+    dag=dag)
 
 t8 = BashOperator(
-	task_id='print_date8',
-	bash_command=command,
-	dag=dag)
+    task_id='print_date8',
+    bash_command=command,
+    dag=dag)
 
 t2.set_upstream(t1)
 t3.set_upstream(t2)
@@ -68,24 +68,24 @@ t7.set_upstream(t3)
 t8.set_upstream(t3)
 
 t9 = BashOperator(
-	task_id='print_date9',
-	bash_command=command,
-	dag=dag)
+    task_id='print_date9',
+    bash_command=command,
+    dag=dag)
 
 t10 = BashOperator(
-	task_id='print_date10',
-	bash_command=command,
-	dag=dag)
+    task_id='print_date10',
+    bash_command=command,
+    dag=dag)
 
 t11 = BashOperator(
-	task_id='print_date11',
-	bash_command=command,
-	dag=dag)
+    task_id='print_date11',
+    bash_command=command,
+    dag=dag)
 
 t12 = BashOperator(
-	task_id='print_date12',
-	bash_command=command,
-	dag=dag)
+    task_id='print_date12',
+    bash_command=command,
+    dag=dag)
 
 t9.set_upstream(t8)
 t10.set_upstream(t8)

@@ -1,16 +1,14 @@
 import configparser
-from datetime import timedelta, datetime
+from datetime import datetime
 
+import pandas as pd
+import numpy as np
 from airflow import DAG
 from airflow.operators.dummy_operator import DummyOperator
-from airflow.hooks.base_hook import BaseHook
 from airflow.hooks.S3_hook import S3Hook
 from airflow.exceptions import AirflowException
 from airflow.operators.python_operator import PythonOperator
 from snowflake_plugin.operators.snowflake_operator import SnowflakeOperator
-
-import pandas as pd
-import numpy as np
 
 
 S3_BUCKET = 'bmez-astronomer'

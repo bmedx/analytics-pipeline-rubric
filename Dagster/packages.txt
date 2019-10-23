@@ -2,3 +2,6 @@ build-base
 gcc
 python3-dev
 cmake
+git
+freetype-dev
+py-numpy-dev

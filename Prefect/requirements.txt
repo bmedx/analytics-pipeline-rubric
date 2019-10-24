@@ -1,2 +1,4 @@
+numpy
 prefect
 prefect[viz,aws,snowflake]
+pandas

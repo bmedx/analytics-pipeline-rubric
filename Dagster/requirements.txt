@@ -1,0 +1,16 @@
+dagster
+dagit
+dagster-airflow
+dagster-aws
+dagster-pandas
+dagster-snowflake
+
+# This is necessary to get around the need for PyArrow introduced as a sad default in later Snowflake connectors
+snowflake-connector-python==1.7.11
+
+# This resolves some other problem I don't remember
+asn1crypto==0.24.0
+
+# These are necessary to get around some S3 import errors
+boto3==1.9.87
+botocore==1.12.83

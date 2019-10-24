@@ -1,0 +1,9 @@
+resources:
+    snowflake:
+        config:
+            account: account_name.region
+            user: snowflake user name
+            password: snowflake password
+            database: snowflake db
+            schema: snowflake schema
+            warehouse: snowflake warehouse - user must have USAGE permission!

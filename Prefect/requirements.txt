@@ -1,0 +1,2 @@
+prefect
+prefect[viz, aws, snowflake]

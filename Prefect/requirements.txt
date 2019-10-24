@@ -1,2 +1,2 @@
 prefect
-prefect[viz, aws, snowflake]
+prefect[viz,aws,snowflake]

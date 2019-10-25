@@ -49,9 +49,12 @@ with Flow("Test 1") as flow:
     # Creates a graphviz image of the DAG
     # flow.visualize()
 
+# In a more realistic scenario we would make the dag using nested function calls like this...
 with Flow("Test 1b") as flowb:
     print_date_parent(print_date('print_1'))
-    flowb.visualize()
+
+    # Creates a graphviz image of the DAG
+    # flowb.visualize()
 
 
 flow.run()

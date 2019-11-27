@@ -1,5 +1,7 @@
 import os
 from prefect import task, Flow
+from prefect.environments import RemoteEnvironment
+from prefect.environments.storage import Docker
 
 command = 'sleep $[ ( $RANDOM % 3 )  + 1 ]s; echo `date`'
 
@@ -13,11 +15,14 @@ def print_date(name):
 
 @task
 def print_date_parent(child_name):
-    print("Just showing how parameterized task flows usually work.")
+    print("Just showing how parameterized task deploy usually work.")
     print("Child passed in: '{}'".format(child_name))
 
 
-with Flow("Test 1") as flow:
+with Flow(
+        "Test 1",
+        environment=RemoteEnvironment(executor="prefect.engine.executors.LocalExecutor")
+) as flow:
     t1 = print_date(name='print_1')
     t2 = print_date(name='print_2')
     t3 = print_date(name='print_3')
@@ -49,13 +54,4 @@ with Flow("Test 1") as flow:
     # Creates a graphviz image of the DAG
     # flow.visualize()
 
-# In a more realistic scenario we would make the dag using nested function calls like this...
-with Flow("Test 1b") as flowb:
-    print_date_parent(print_date('print_1'))
-
-    # Creates a graphviz image of the DAG
-    # flowb.visualize()
-
-
-flow.run()
-# flowb.run()
+# flow.run()

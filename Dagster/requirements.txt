@@ -6,7 +6,7 @@ dagster-pandas
 dagster-snowflake
 
 # This is necessary to get around the need for PyArrow introduced as a sad default in later Snowflake connectors
-snowflake-connector-python==1.7.11
+snowflake-connector-python==3.0.2
 
 # This resolves some other problem I don't remember
 asn1crypto==0.24.0
